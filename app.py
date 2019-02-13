@@ -1,5 +1,14 @@
 import re
 
+class gonderi:
+    def __init__(self,tarih,saat,isim,mesaj):
+        self.tarih = tarih
+        self.saat = saat
+        self.isim = isim
+        self.mesaj = mesaj
+    def display(self):
+        print("Tarih:",self.tarih,"\nSaat:",self.saat,"\nIsim:",self.isim,"\nMesaj:",self.mesaj)
+
 cumle = """25.11.2018 13:39 - Doğukan Gedik: Semih bilimle ilgili
 25.11.2018 13:39 - Doğukan Gedik: Selçuk ve Enes makina ile ilgili bende mekatronikle ilgili
 25.11.2018 13:40 - Doğukan Gedik: Hem bir şeyler paylaşırken bizde  bilgi olarak ilerleriz
@@ -13,21 +22,22 @@ cumle = """25.11.2018 13:39 - Doğukan Gedik: Semih bilimle ilgili
 25.11.2018 13:43 - Doğukan Gedik: Anladığın konularla ilgili yazılar yazarsın diye seni de ekledim
 25.11.2018 13:44 - Doğukan Gedik: %100 mühendislikle ilgili bir sayfa olacak diye bir şey yok ki"""
 
+kelime = "25.11.2018 13:43 - Doğukan Gedik: Sende bilimle ilgili paylaşım yaparsın"
+p = re.compile("(\d{2}.\d{2}.\d{4})\s(\d{2}:\d{2})\s-\s([A-Za-zıİöÖüÜçÇşŞğĞ\s]*):\s(.*)")
+gonderi1 = gonderi(p.search(kelime).group(1),p.search(kelime).group(2),p.search(kelime).group(3),p.search(kelime).group(4))
+
+gonderi1.display()
+
 bol = cumle.split("\n")
 tarih=[]
 saat=[]
 isim=[]
 mesaj=[]
 
-p = re.compile("(\d{2}.\d{2}.\d{4})\s(\d{2}:\d{2})\s-\s([A-Za-zıİöÖüÜçÇşŞğĞ\s]*):\s(.*)")
 
-for i in bol:
-    p = re.compile("(\d{2}.\d{2}.\d{4})\s(\d{2}:\d{2})\s-\s([A-Za-zıİöÖüÜçÇşŞğĞ\s]*):\s(.*)")
-    tarih.append( p.search(i).group(1) )
-    saat.append( p.search(i).group(2) )
-    isim.append( p.search(i).group(3) )
-    mesaj.append( p.search(i).group(4) )
-
-
-for i in range(12):
-    print(mesaj[i])
+# for i in bol:
+#     p = re.compile("(\d{2}.\d{2}.\d{4})\s(\d{2}:\d{2})\s-\s([A-Za-zıİöÖüÜçÇşŞğĞ\s]*):\s(.*)")
+#     tarih.append( p.search(i).group(1) )
+#     saat.append( p.search(i).group(2) )
+#     isim.append( p.search(i).group(3) )
+#     mesaj.append( p.search(i).group(4) )
