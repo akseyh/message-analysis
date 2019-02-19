@@ -14,8 +14,6 @@ while True:
         lineCount += 1
     else:
         break
-
-print(lineCount)
 text.close()
 
 text = open("deneme.txt","r")
@@ -30,11 +28,39 @@ for i in range(lineCount):
         p.search(metin).group(4))
     )
 
-# kullanici adlari ile dosya olusturup icine mesajlari split ile kelimelere bolerek atiyor
+kelimeler = {}
+for r in data:
+    name = r[2]
+    name = name.replace(" ","-")
+    name = name.replace('ş', 's')
+    name = name.replace('ğ', 'g')
+    name = name.replace('ç', 'c')
+    name = name.replace('İ', 'i')
+    name = name.replace('ı', 'i')
+    name = name.replace('ö', 'o')
+    name = name.replace('ü', 'u')
+    kelimeler[name] = {}
+
 for i in data:
-    with open(str(i[2].replace(" ","-"))+".txt", "a") as txtFile:
-        for j in i[3].split():
-            txtFile.write(str(j)+"\n")
-        txtFile.close()
+    name = str(i[2].replace(" ","-"))
+    name = name.replace('ş', 's')
+    name = name.replace('ğ', 'g')
+    name = name.replace('ç', 'c')
+    name = name.replace('İ', 'i')
+    name = name.replace('ı', 'i')
+    name = name.replace('ö', 'o')
+    name = name.replace('ü', 'u')
+
+    for j in i[3].split():
+        j = j.replace("İ","i")
+        j = j.lower()
+        if j not in kelimeler[name]:
+            kelimeler[name].update({
+                j:1
+            })
+        else:
+            kelimeler[name].update({ j: int(kelimeler[name].get(j)+1) }) 
+
+print(kelimeler)
 
 text.close()
