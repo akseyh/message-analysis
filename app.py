@@ -2,7 +2,9 @@ import re,json
 
 p = re.compile("(\d{2}.\d{2}.\d{4})\s(\d{2}:\d{2})\s-\s([A-Za-zıİöÖüÜçÇşŞğĞ\s]*):\s(.*)")
 
-text = open("deneme.txt","r")
+textFile = "deneme.txt"
+
+text = open(textFile,"r")
 metin = str
 data = []
 lineCount = 0
@@ -16,7 +18,7 @@ while True:
         break
 text.close()
 
-text = open("deneme.txt","r")
+text = open(textFile,"r")
 for i in range(lineCount):
     metin = text.readline()
     if( p.search(metin) is None):
@@ -61,6 +63,16 @@ for i in data:
         else:
             kelimeler[name].update({ j: int(kelimeler[name].get(j)+1) }) 
 
-print(kelimeler)
+for kullanici in kelimeler:
+    kontrol = 0
+    word = ""
+    for kelime in kelimeler[kullanici]:
+        if(kelimeler[kullanici].get(kelime)>kontrol):
+            kontrol = kelimeler[kullanici].get(kelime)
+            word = kelime
+    print(kullanici)
+    print(word)
+    print(kontrol)
+
 
 text.close()
