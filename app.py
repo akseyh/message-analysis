@@ -22,18 +22,6 @@ while True:
         break
 
 kelimeler = {}
-for r in data:
-    name = r[2]
-    name = name.replace(" ","-")
-    name = name.replace('ş', 's')
-    name = name.replace('ğ', 'g')
-    name = name.replace('ç', 'c')
-    name = name.replace('İ', 'i')
-    name = name.replace('ı', 'i')
-    name = name.replace('ö', 'o')
-    name = name.replace('ü', 'u')
-    kelimeler[name] = {}
-    veriler[name] = {}
 
 for satir in data:
     name = str(satir[2].replace(" ","-"))
@@ -45,19 +33,25 @@ for satir in data:
     name = name.replace('ö', 'o')
     name = name.replace('ü', 'u')
 
-    for j in satir[3].split():
-        j = j.replace("İ","i")
-        j = j.lower()
-        if j not in kelimeler[name]:
+    if( name not in kelimeler ):
+        kelimeler[name] = {}
+        veriler[name] = {}
+
+    for kelime in satir[3].split():
+        kelime = kelime.replace("İ","i")
+        kelime = kelime.lower()
+        if kelime not in kelimeler[name]:
             kelimeler[name].update({
-                j:1
+                kelime:1
             })
         else:
-            kelimeler[name].update({ j: int(kelimeler[name].get(j)+1) }) 
+            kelimeler[name].update({ kelime: int(kelimeler[name].get(kelime)+1) }) 
 
-for kullanici in kelimeler:
+# En çok geçen kelimenin bulunması
+# kelimeler veriler dictionary'sine atılıyor. istenen kullanicinin kelimesi veriler[kullanici] ile cekilebilir.
+for kullanici in kelimeler.keys():
     sayac = 0
-    word = ""
+    word = str
     for kelime in kelimeler[kullanici]:
         if(kelimeler[kullanici].get(kelime)>sayac):
             sayac = kelimeler[kullanici].get(kelime)
