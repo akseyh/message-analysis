@@ -9,17 +9,19 @@ data = []
 veriler = {}
 
 text = open(textFile,"r")
-while True:
+metin = text.readline()
+while metin:
     metin = text.readline()
-    if( metin ):
+    if( re.search(p,metin) ):
         data.append(
-            (p.search(metin).group(1),
-            p.search(metin).group(2),
-            p.search(metin).group(3),
-            p.search(metin).group(4))
+                (p.search(metin).group(1),
+                p.search(metin).group(2),
+                p.search(metin).group(3),
+                p.search(metin).group(4))
         )
     else:
-        break
+        continue
+        
 
 kelimeler = {}
 
