@@ -10,6 +10,7 @@ veriler = {}
 
 text = open(textFile,"r")
 metin = text.readline()
+
 while metin:
     metin = text.readline()
     if( re.search(p,metin) ):
