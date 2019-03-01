@@ -54,13 +54,9 @@ for satir in data:
 # En çok geçen kelimenin bulunması
 # kelimeler veriler dictionary'sine atılıyor. istenen kullanicinin kelimesi veriler[kullanici] ile cekilebilir.
 for kullanici in kelimeler.keys():
-    sayac = 0
-    word = str
-    for kelime in kelimeler[kullanici]:
-        if(kelimeler[kullanici].get(kelime)>sayac):
-            sayac = kelimeler[kullanici].get(kelime)
-            word = kelime
-    veriler[kullanici].update({word:sayac})
+    sorted_words = sorted(kelimeler[kullanici],key=kelimeler[kullanici].get)
+    word_frequency = kelimeler[kullanici].get(sorted_words[-1])
+    veriler[kullanici].update({ sorted_words[-1] : word_frequency })
 
 print(veriler)
 
