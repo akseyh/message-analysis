@@ -9,10 +9,11 @@ data = []
 veriler = {}
 
 text = open(textFile,"r")
-metin = text.readline()
 
-while metin:
+while True:
     metin = text.readline()
+    if(not metin):
+        break
     if( re.search(p,metin) ):
         data.append(
                 (p.search(metin).group(1),
