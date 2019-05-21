@@ -9,7 +9,7 @@ Rehberinizde kayıtlı olmayan kişilerin mesajları analiz edilmeyecektir.\
 Mesajları dışa aktardıktan sonra ister txt dosyasının adını deneme.txt yaparak dizindeki txt dosyası ile değiştirebilir isterseniz de deneme.txt dosyasının içeriğini değiştirebilirsiniz.
 
 ## Uygulamanın çalıştırılması:
-Öncelikle uygulamayı clone or download kısmından download edebilir veya\
+Öncelikle uygulamayı clone or download kısmından download edebilir veya
 ```
 git clone https://github.com/akseyh/message-analysis.git
 ```
