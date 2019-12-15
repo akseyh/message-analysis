@@ -8,9 +8,11 @@ result, words, data = {}, {}, []
 turkishCharacters = { 'ş':'s', 'ğ':'g', 'ç':'c', 'İ':'i', 'ı':'i', 'ö':'o', 'ü':'u', ' ':'-' }
 
 text = open(textFile,"r")
-
 while True:
-    line = str( text.readline() )
+    try:
+        line = str( text.readline() )
+    except:
+        continue
     if( not line ): break
     if( not re.search(p,line) ): continue
 
